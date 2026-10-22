@@ -1,0 +1,68 @@
+# Release pipeline: tag-triggered pre-compiled installers via Tauri.
+# Push a tag like v0.1.0 (or run manually) -> builds per OS -> attaches
+# bundles to the GitHub Release created by tauri-action.
+# No updater and no code signing: no signing keys are available, so the
+# app ships without an auto-update feed and installers will show the
+# usual unsigned warnings on first run.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+# tauri-action needs write access to create/upload the GitHub Release.
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.platform }})
+    runs-on: ${{ matrix.platform }}
+    # macOS is best-effort: no Mac hardware available for testing, so a
+    # macOS failure must not block the Windows/Linux installers.
+    continue-on-error: ${{ matrix.experimental == true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows-latest
+            experimental: false
+          - platform: ubuntu-22.04
+            experimental: false
+          - platform: macos-latest
+            experimental: true # experimental, untested (no Mac available)
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Same toolchain pattern as ci.yml.
+      - name: Setup Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      # Required by tauri-action even for the static frontend/ dir.
+      - name: Setup Node (Tauri frontend)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      # System libraries needed to bundle Tauri v2 on Linux.
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      # Bundle targets come from src-tauri/tauri.conf.json ("targets": "all"):
+      # Windows -> nsis (.exe) + msi, Ubuntu -> appimage + deb, macOS -> dmg.
+      # Default release behaviour: on a tag push, tauri-action creates (or
+      # reuses) the GitHub Release for that tag and uploads the bundles.
+      - name: Build and release Tauri bundles
+        uses: tauri-apps/tauri-action@v0
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "MicForge ${{ github.ref_name }}"
+          releaseDraft: false
+          prerelease: false

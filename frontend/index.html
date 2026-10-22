@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MicForge</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main controls</a>
+<header class="topbar">
+  <div class="brand">
+    <h1>MicForge</h1>
+    <span id="backendBadge" class="badge" role="status">Demo mode</span>
+  </div>
+  <div class="top-controls">
+    <label class="inline-field">Preset
+      <select id="presetSelect" aria-label="Preset">
+        <option value="generic">Generic</option>
+        <option value="blue-yeti">Blue Yeti</option>
+        <option value="laptop">Laptop</option>
+      </select>
+    </label>
+    <div class="view-toggle" role="group" aria-label="View">
+      <button id="viewSimple" type="button" aria-pressed="true">Simple</button>
+      <button id="viewPro" type="button" aria-pressed="false">Pro</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- First-run onboarding card -->
+  <section id="onboardCard" class="card" aria-labelledby="onboardTitle" hidden>
+    <h2 id="onboardTitle">First-run setup</h2>
+    <ol class="checklist">
+      <li><span id="obMicState" aria-live="polite">Checking microphone…</span></li>
+      <li><span id="obCableState" aria-live="polite">Checking CABLE output…</span>
+        <a href="https://vb-audio.com/Cable/" target="_blank" rel="noopener">Install VB-CABLE</a>
+      </li>
+      <li>Set Yeti gain to minimum, pattern to cardioid (heart), sample rate to 48 kHz.</li>
+    </ol>
+    <label class="inline-field"><input type="checkbox" id="onboardAck"> Got it — don't show again</label>
+    <div class="row">
+      <button id="onboardRecheck" type="button">Check again</button>
+      <button id="onboardDismiss" type="button">Close</button>
+    </div>
+  </section>
+
+  <!-- Cable-missing banner (non-blocking) -->
+  <div id="cableBanner" class="banner warn" role="alert" hidden>
+    <span>Output to apps (CABLE) not found — sliders still work, but apps hear nothing.</span>
+    <button id="cableReview" type="button">Review first-run setup</button>
+  </div>
+
+  <!-- Mic-missing blocking state -->
+  <div id="micMissing" class="banner error" role="alert" hidden>
+    <span>No input microphone detected. Plug in your mic.</span>
+    <button id="micRecheck" type="button">Check again</button>
+  </div>
+
+  <!-- Voice area -->
+  <section class="card" aria-labelledby="voiceTitle">
+    <h2 id="voiceTitle" class="visually-hidden">Voice controls</h2>
+    <div class="voice-row">
+      <button id="muteBtn" type="button" class="mute" aria-pressed="false">Unmuted</button>
+      <div class="meter-wrap">
+        <label for="meter">Level</label>
+        <div class="meter-row">
+          <div id="meter" class="meter" role="meter" aria-label="Input level"
+               aria-valuemin="-60" aria-valuemax="0" aria-valuenow="-60" tabindex="0">
+            <div id="meterFill" class="meter-fill"></div>
+          </div>
+          <span id="clipLed" class="clip" aria-label="Clip indicator">CLIP</span>
+        </div>
+        <div class="meter-meta"><span id="peakLabel">Peak: −∞ dB</span><span id="latencyLabel">Latency: — ms</span></div>
+      </div>
+      <div class="transport">
+        <button id="startBtn" type="button">Start</button>
+        <button id="stopBtn" type="button" disabled>Stop</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simple sliders -->
+  <section class="card" aria-labelledby="simpleTitle">
+    <h2 id="simpleTitle">Sound</h2>
+    <div class="slider">
+      <label for="slVolume">Volume <span class="hint">Louder</span></label>
+      <input id="slVolume" type="range" min="0" max="100" value="70">
+      <output id="slVolumeVal" for="slVolume">70%</output>
+    </div>
+    <div class="slider">
+      <label for="slClarity">Clarity <span class="hint">Clearer voice</span></label>
+      <input id="slClarity" type="range" min="0" max="100" value="50">
+      <output id="slClarityVal" for="slClarity">50%</output>
+    </div>
+    <div class="slider">
+      <label for="slNoise">Noise reduction <span class="hint">Cuts background noise</span></label>
+      <input id="slNoise" type="range" min="0" max="100" value="60">
+      <output id="slNoiseVal" for="slNoise">60%</output>
+    </div>
+  </section>
+
+  <!-- Devices -->
+  <section class="card" aria-labelledby="devTitle">
+    <h2 id="devTitle">Devices</h2>
+    <div class="dev-grid">
+      <label class="inline-field">Input microphone
+        <select id="inputSelect" aria-label="Input microphone"></select>
+      </label>
+      <label class="inline-field">Output to apps
+        <select id="outputSelect" aria-label="Output to apps"></select>
+      </label>
+      <button id="rescanBtn" type="button">Rescan</button>
+    </div>
+  </section>
+
+  <!-- Pro chain -->
+  <section id="proSection" class="card" aria-labelledby="proTitle" hidden>
+    <h2 id="proTitle">DSP chain</h2>
+    <p class="muted">Fixed order: signal flows top to bottom.</p>
+    <div id="chain"></div>
+    <div class="row chain-footer">
+      <span id="chainLatency" class="muted">Estimated latency: — ms</span>
+      <button id="micTestBtn" type="button">Test my mic (5 s)</button>
+      <span id="micTestResult" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

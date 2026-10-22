@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "name": "yeti-stream",
+  "highpass": { "enabled": true, "frequencyHz": 100 },
+  "rnnoise": { "enabled": true },
+  "gate": { "enabled": true, "thresholdDb": -45.0, "attackMs": 3.0, "releaseMs": 100.0 },
+  "comp": { "enabled": true, "thresholdDb": -20.0, "ratio": 4.0, "attackMs": 8.0, "releaseMs": 120.0, "makeupDb": 6.0 },
+  "eq": {
+    "enabled": true,
+    "bands": [
+      { "frequencyHz": 100.0, "gainDb": -3.0, "q": 1.0 },
+      { "frequencyHz": 400.0, "gainDb": 1.0, "q": 1.0 },
+      { "frequencyHz": 2500.0, "gainDb": 3.0, "q": 1.0 },
+      { "frequencyHz": 9000.0, "gainDb": -2.0, "q": 1.0 }
+    ]
+  },
+  "deesser": { "enabled": true, "frequencyHz": 7000.0, "thresholdDb": -26.0 },
+  "limiter": { "enabled": true, "ceilingDb": -1.5, "releaseMs": 40.0 },
+  "notes": "Preset stream punchy : compression marquée ratio 4:1, présence renforcée, gate serré contre clavier et clics."
+}

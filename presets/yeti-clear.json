@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "name": "yeti-clear",
+  "highpass": { "enabled": true, "frequencyHz": 80 },
+  "rnnoise": { "enabled": true },
+  "gate": { "enabled": true, "thresholdDb": -40.0, "attackMs": 5.0, "releaseMs": 120.0 },
+  "comp": { "enabled": true, "thresholdDb": -18.0, "ratio": 3.0, "attackMs": 10.0, "releaseMs": 150.0, "makeupDb": 4.0 },
+  "eq": {
+    "enabled": true,
+    "bands": [
+      { "frequencyHz": 120.0, "gainDb": -2.0, "q": 1.0 },
+      { "frequencyHz": 500.0, "gainDb": 0.0, "q": 1.0 },
+      { "frequencyHz": 3000.0, "gainDb": 2.0, "q": 1.0 },
+      { "frequencyHz": 8000.0, "gainDb": -1.0, "q": 1.0 }
+    ]
+  },
+  "deesser": { "enabled": true, "frequencyHz": 6500.0, "thresholdDb": -24.0 },
+  "limiter": { "enabled": true, "ceilingDb": -1.0, "releaseMs": 50.0 },
+  "notes": "Preset polyvalent voix claire : coupe-bas doux, présence +2 dB à 3 kHz, limiteur à -1 dB."
+}

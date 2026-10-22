@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "name": "yeti-meeting",
+  "highpass": { "enabled": true, "frequencyHz": 120 },
+  "rnnoise": { "enabled": true },
+  "gate": { "enabled": true, "thresholdDb": -38.0, "attackMs": 10.0, "releaseMs": 200.0 },
+  "comp": { "enabled": true, "thresholdDb": -16.0, "ratio": 2.5, "attackMs": 15.0, "releaseMs": 200.0, "makeupDb": 3.0 },
+  "eq": {
+    "enabled": true,
+    "bands": [
+      { "frequencyHz": 150.0, "gainDb": -1.0, "q": 1.0 },
+      { "frequencyHz": 600.0, "gainDb": 0.0, "q": 1.0 },
+      { "frequencyHz": 2000.0, "gainDb": 1.5, "q": 1.0 },
+      { "frequencyHz": 7000.0, "gainDb": -2.0, "q": 1.0 }
+    ]
+  },
+  "deesser": { "enabled": false, "frequencyHz": 6500.0, "thresholdDb": -24.0 },
+  "limiter": { "enabled": true, "ceilingDb": -2.0, "releaseMs": 80.0 },
+  "notes": "Preset visio naturel : compression douce, gate souple avec release long pour ne pas couper les fins de phrases."
+}

@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  linux:
+    name: Test + lint (Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Test workspace
+        run: cargo test --workspace
+
+      - name: Clippy (deny warnings)
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Validate presets/*.json
+        run: |
+          for f in presets/*.json; do
+            echo "Checking $f"
+            python3 -m json.tool "$f" > /dev/null
+          done
+
+  windows:
+    name: Test + bundle (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Node (Tauri frontend)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Test workspace
+        run: cargo test --workspace
+
+      - name: Check frontend exists
+        id: frontend
+        shell: pwsh
+        run: |
+          if (Test-Path frontend/index.html) { echo "exists=true" >> $env:GITHUB_OUTPUT }
+          else { echo "exists=false" >> $env:GITHUB_OUTPUT }
+
+      - name: Bundle Tauri app
+        if: steps.frontend.outputs.exists == 'true'
+        uses: tauri-apps/tauri-action@v0
+
+      - name: Upload bundle
+        if: steps.frontend.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: MicForge-bundle-windows
+          path: src-tauri/target/release/bundle/**

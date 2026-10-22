@@ -1,33 +1,33 @@
-# Câble audio virtuel — Installation (VB-CABLE)
+# Virtual audio cable — Installation (VB-CABLE)
 
-Yeti Voice ne bundle **aucun driver audio** (choix volontaire + légal).
-Le son traité sort vers un câble virtuel que tes apps utilisent comme micro.
+Yeti Voice bundles **no audio driver** (deliberate + legal choice).
+The processed sound goes out to a virtual cable that your apps use as a microphone.
 
-## Installation de VB-CABLE (externe)
+## Installing VB-CABLE (external)
 
-1. Télécharge VB-CABLE sur le site officiel : <https://vb-audio.com/Cable/>
-2. Décompresse, clic droit sur `VBCABLE_Setup_x64.exe` → **Exécuter en tant qu'administrateur**.
-3. Redémarre si demandé.
-4. Vérifie : Paramètres Son → Lecture → « CABLE Input », Enregistrement → « CABLE Output ».
+1. Download VB-CABLE from the official site: <https://vb-audio.com/Cable/>
+2. Unzip, right-click `VBCABLE_Setup_x64.exe` → **Run as administrator**.
+3. Reboot if asked.
+4. Verify: Sound settings → Playback → "CABLE Input", Recording → "CABLE Output".
 
-## Détection dans Yeti Voice
+## Detection in Yeti Voice
 
-- Au démarrage, l'app liste les sorties WASAPI : choisis **« CABLE Input (VB-Audio Virtual Cable) »**.
-- Bouton **Re-scanner** : reliste les périphériques (utile après installation du driver
-  ou reconnexion USB du Yeti sans redémarrer l'app).
+- On startup, the app lists WASAPI outputs: pick **"CABLE Input (VB-Audio Virtual Cable)"**.
+- **Rescan** button: re-lists devices (handy after installing the driver
+  or reconnecting the Yeti over USB without restarting the app).
 
-## Fallback VAC
+## VAC fallback
 
-Si VB-CABLE ne convient pas (latence, besoin multi-câbles), toute alternative
-exposant un périphérique WASAPI de lecture fonctionne :
-[Virtual Audio Cable](https://vac.muzychenko.net/) (payant),
-[Voicemeeter](https://vb-audio.com/Voicemeeter/) (même éditeur).
-Sélectionne simplement son entrée comme sortie dans l'app.
+If VB-CABLE does not fit (latency, multi-cable needs), any alternative
+exposing a WASAPI playback device works:
+[Virtual Audio Cable](https://vac.muzychenko.net/) (paid),
+[Voicemeeter](https://vb-audio.com/Voicemeeter/) (same vendor).
+Just select its input as the output in the app.
 
-## Routage type
+## Typical routing
 
 ```
 Blue Yeti ──WASAPI──▶ Yeti Voice (DSP) ──WASAPI──▶ CABLE Input
-                                                      │
-Discord/OBS : micro = « CABLE Output » ◀──────────────┘
+                                                       │
+Discord/OBS: mic = "CABLE Output" ◀───────────────────┘
 ```

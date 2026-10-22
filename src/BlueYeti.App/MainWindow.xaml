@@ -3,17 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Yeti Voice" Height="420" Width="480">
   <StackPanel Margin="16">
-    <TextBlock Text="Yeti Voice — Réglage Blue Yeti" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
-    <TextBlock Text="Entrée (micro)" Margin="0,0,0,4"/>
+    <TextBlock Text="Yeti Voice — Blue Yeti Tuning" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+    <TextBlock Text="Input (microphone)" Margin="0,0,0,4"/>
     <ComboBox x:Name="InputSelector" Margin="0,0,0,8"/>
-    <TextBlock Text="Sortie (câble virtuel)" Margin="0,0,0,4"/>
+    <TextBlock Text="Output (virtual cable)" Margin="0,0,0,4"/>
     <ComboBox x:Name="OutputSelector" Margin="0,0,0,8"/>
     <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-      <Button x:Name="RescanButton" Content="Re-scanner" Width="100" Margin="0,0,8,0" Click="OnRescan"/>
-      <Button x:Name="StartButton" Content="Démarrer" Width="100" Margin="0,0,8,0" Click="OnStartStop"/>
+      <Button x:Name="RescanButton" Content="Rescan" Width="100" Margin="0,0,8,0" Click="OnRescan"/>
+      <Button x:Name="StartButton" Content="Start" Width="100" Margin="0,0,8,0" Click="OnStartStop"/>
     </StackPanel>
-    <TextBlock Text="Niveau" Margin="0,0,0,4"/>
+    <TextBlock Text="Level" Margin="0,0,0,4"/>
     <ProgressBar x:Name="PeakMeter" Height="20" Minimum="0" Maximum="100" Value="0"/>
-    <!-- TODO: sliders DSP (gate/comp/EQ), sélecteur de preset, affichage dB -->
+    <!-- TODO: DSP sliders (gate/comp/EQ), preset selector, dB display -->
   </StackPanel>
 </Window>

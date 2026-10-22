@@ -16,5 +16,5 @@
   },
   "deesser": { "enabled": true, "frequencyHz": 7000.0, "thresholdDb": -26.0 },
   "limiter": { "enabled": true, "ceilingDb": -1.5, "releaseMs": 40.0 },
-  "notes": "Preset stream punchy : compression marquée ratio 4:1, présence renforcée, gate serré contre clavier et clics."
+  "notes": "Punchy streaming preset: heavy compression at 4:1 ratio, boosted presence, tight gate against keyboard and clicks."
 }

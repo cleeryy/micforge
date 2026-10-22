@@ -1,26 +1,26 @@
-# Blue Yeti — Réglages physiques recommandés
+# Blue Yeti — Recommended physical settings
 
-L'app corrige le signal, mais un mauvais réglage physique ne se rattrape pas.
-Base de départ avant d'ouvrir Yeti Voice :
+The app fixes the signal, but a bad physical setup cannot be recovered.
+Starting point before opening Yeti Voice:
 
-## Position du micro
+## Mic position
 
-- **Mode cardioïde** : sélecteur arrière sur le symbole « cœur » (3e position).
-  Parle **face au logo Blue**, pas par le dessus.
-- Distance bouche-micro : **15–20 cm**, légèrement sur le côté pour éviter les plosives.
-- Gain : **au minimum**, puis monte progressivement. Un gain trop fort sature
-  et aucun DSP ne répare une saturation numérique.
+- **Cardioid mode**: rear selector on the "heart" symbol (3rd position).
+  Speak **into the Blue logo side**, not from the top.
+- Mouth-to-mic distance: **15–20 cm**, slightly off-axis to avoid plosives.
+- Gain: **at minimum**, then raise gradually. Too much gain saturates
+  and no DSP can repair digital saturation.
 
-## Fréquence d'échantillonnage
+## Sample rate
 
-- Règle le Yeti en **48 kHz / 16 bits** (Panneau de configuration Son →
-  Enregistrement → Yeti → Propriétés → Qualité studio).
-- La chaîne DSP de l'app travaille en 48 kHz : tout autre taux force un
-  rééchantillonnage inutile.
+- Set the Yeti to **48 kHz / 16-bit** (Sound Control Panel →
+  Recording → Yeti → Properties → Studio quality).
+- The app's DSP chain runs at 48 kHz: any other rate forces a
+  pointless resampling step.
 
-## Check-list rapide
+## Quick checklist
 
-1. Cardioïde + face au logo, 15–20 cm.
-2. Gain mini puis ajusté (le peak-meter de l'app doit culminer vers −12 dBFS en voix normale).
-3. 48 kHz côté Windows.
-4. Coupe le monitoring direct du Yeti (bouton volume casque) si tu t'écoutes via l'app.
+1. Cardioid + facing the logo, 15–20 cm.
+2. Gain low then adjusted (the app's peak meter should peak around −12 dBFS for normal speech).
+3. 48 kHz on the Windows side.
+4. Turn off the Yeti's direct monitoring (headphone volume knob) if you monitor yourself through the app.

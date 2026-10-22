@@ -1,61 +1,61 @@
 # Yeti Voice
 
-**Règle ton Blue Yeti à 100 % sur Windows.** Application open-source (AGPL-3.0-only)
-de traitement micro en temps réel : branche ton Blue Yeti, applique une chaîne DSP
-(réduction de bruit, gate, compresseur, EQ, de-esser, limiteur) et route le son
-traité vers tes apps (Discord, OBS, visio…).
+**Tune your Blue Yeti 100% on Windows.** Open-source (AGPL-3.0-only)
+real-time microphone processing app: plug in your Blue Yeti, apply a DSP chain
+(noise reduction, gate, compressor, EQ, de-esser, limiter) and route the
+processed sound to your apps (Discord, OBS, video calls…).
 
-## Principe
+## How it works
 
-- App 100 % **user-mode** : capture WASAPI du micro via [NAudio](https://github.com/naudio/NAudio),
-  traitement DSP en C# (.NET 8), lecture vers un **câble audio virtuel externe**.
-- Le câble virtuel **n'est pas fourni** avec l'app : installe
-  [VB-CABLE](https://vb-audio.com/Cable/) (gratuit, driver signé) séparément,
-  puis sélectionne « CABLE Input » comme sortie dans Yeti Voice.
-- Voir `docs/SETUP-CABLE.md` pour l'installation et `docs/BLUE-YETI.md` pour les
-  réglages physiques du micro.
+- 100% **user-mode** app: WASAPI capture of the mic via [NAudio](https://github.com/naudio/NAudio),
+  DSP processing in C# (.NET 8), playback to an **external virtual audio cable**.
+- The virtual cable is **not bundled** with the app: install
+  [VB-CABLE](https://vb-audio.com/Cable/) (free, signed driver) separately,
+  then select "CABLE Input" as the output in Yeti Voice.
+- See `docs/SETUP-CABLE.md` for installation and `docs/BLUE-YETI.md` for the
+  physical mic settings.
 
-## Prérequis
+## Prerequisites
 
 - Windows 10/11 (x64)
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) (pour builder)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) (to build)
 
-## Build / Publish portable
+## Build / Portable publish
 
 ```powershell
 dotnet build yeti-voice.sln
 dotnet publish src/BlueYeti.App/BlueYeti.App.csproj -c Release -r win-x64 --self-contained -o publish
 ```
 
-Le dossier `publish/` est portable : copie-le où tu veux, aucun installeur requis.
-Installeur Inno Setup (optionnel) : voir `installer/setup.iss`.
+The `publish/` folder is portable: copy it anywhere, no installer required.
+Optional Inno Setup installer: see `installer/setup.iss`.
 
-## Scope MVP
+## MVP scope
 
-- [x] Sélection entrée (Blue Yeti) / sortie (câble virtuel), re-scan des devices
-- [x] Chaîne DSP : high-pass, RNNoise, noise gate, compresseur, EQ 4 bandes, de-esser, limiteur
-- [x] Presets JSON : `yeti-clear`, `yeti-stream`, `yeti-meeting`
-- [x] Peak-meter temps réel
-- [ ] RNNoise natif (actuellement stub — TODO)
-- [ ] Auto-gain, monitoring latence
+- [x] Input (Blue Yeti) / output (virtual cable) selection, device re-scan
+- [x] DSP chain: high-pass, RNNoise, noise gate, compressor, 4-band EQ, de-esser, limiter
+- [x] JSON presets: `yeti-clear`, `yeti-stream`, `yeti-meeting`
+- [x] Real-time peak meter
+- [ ] Native RNNoise (currently stub — TODO)
+- [ ] Auto-gain, latency monitoring
 
-## Hors-scope
+## Out of scope
 
-- Redistribution d'un driver / câble virtuel (interdit : l'utilisateur l'installe lui-même)
-- macOS / Linux (WASAPI = Windows uniquement)
-- Effets voix (pitch, robot) — DSP correctif uniquement
+- Redistributing a virtual cable / driver (forbidden: the user installs it themselves)
+- macOS / Linux (WASAPI is Windows-only)
+- Voice effects (pitch, robot) — corrective DSP only
 
-## Structure
+## Layout
 
 ```
-src/BlueYeti.Core/    # Moteur audio + chaîne DSP + modèles (net8.0, testable)
-src/BlueYeti.App/     # UI WPF (net8.0-windows) : sélecteurs, peak-meter
-tests/BlueYeti.Core.Tests/  # Tests xunit du Core
-presets/              # Presets JSON livrés avec l'app
-docs/                 # DESIGN.md (maquette), BLUE-YETI.md, SETUP-CABLE.md
-installer/            # Script Inno Setup
+src/BlueYeti.Core/    # Audio engine + DSP chain + models (net8.0, testable)
+src/BlueYeti.App/     # WPF UI (net8.0-windows): selectors, peak meter
+tests/BlueYeti.Core.Tests/  # xunit tests for the Core
+presets/              # JSON presets shipped with the app
+docs/                 # DESIGN.md (mockup), BLUE-YETI.md, SETUP-CABLE.md
+installer/            # Inno Setup script
 ```
 
-## Licence
+## License
 
-AGPL-3.0-only — voir `LICENSE`. Copyright (c) 2026 cleeryy.
+AGPL-3.0-only — see `LICENSE`. Copyright (c) 2026 cleeryy.

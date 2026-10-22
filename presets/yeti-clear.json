@@ -16,5 +16,5 @@
   },
   "deesser": { "enabled": true, "frequencyHz": 6500.0, "thresholdDb": -24.0 },
   "limiter": { "enabled": true, "ceilingDb": -1.0, "releaseMs": 50.0 },
-  "notes": "Preset polyvalent voix claire : coupe-bas doux, présence +2 dB à 3 kHz, limiteur à -1 dB."
+  "notes": "Versatile clear-voice preset: gentle high-pass, +2 dB presence at 3 kHz, limiter at -1 dB."
 }

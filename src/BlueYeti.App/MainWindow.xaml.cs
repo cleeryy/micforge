@@ -17,8 +17,8 @@ public partial class MainWindow : Window
 
     private void RefreshDevices()
     {
-        // TODO: énumérer MMDeviceEnumerator (NAudio) -> InputSelector / OutputSelector,
-        // présélectionner Blue Yeti en entrée et CABLE Input en sortie.
+        // TODO: enumerate MMDeviceEnumerator (NAudio) -> InputSelector / OutputSelector,
+        // preselect Blue Yeti as input and CABLE Input as output.
         InputSelector.Items.Clear();
         OutputSelector.Items.Clear();
     }
@@ -27,8 +27,8 @@ public partial class MainWindow : Window
 
     private void OnStartStop(object sender, RoutedEventArgs e)
     {
-        // TODO: Start(input, output) / Stop() + MAJ du libellé du bouton.
-        MessageBox.Show("TODO: câbler AudioEngine + NAudio.", "Yeti Voice");
+        // TODO: Start(input, output) / Stop() + update the button label.
+        MessageBox.Show("TODO: wire up AudioEngine + NAudio.", "Yeti Voice");
     }
 
     protected override void OnClosed(EventArgs e)

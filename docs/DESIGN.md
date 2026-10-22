@@ -1,39 +1,39 @@
-# Yeti Voice — Cadrage visuel (UI/UX uniquement)
+# Yeti Voice — Visual scope (UI/UX only)
 
-## 1. Vue Simple (par défaut)
+## 1. Simple view (default)
 
-But : régler en 10 secondes, sans notion technique.
+Goal: dial in your sound in 10 seconds, no technical jargon.
 
-De haut en bas :
-1. En-tête : « Yeti Voice », liste « Préréglage » (Claire / Direct / Visio) + bouton « Mode avancé ».
-2. Zone voix : gros bouton « Son coupé / Son activé », vumètre vertical, témoin rouge « Saturation ! » en cas d'écrêtage.
-3. Trois grands curseurs : « Volume », « Clarté », « Anti-bruit », chacun avec valeur en % et aide courte (« Plus fort », « Voix plus nette », « Coupe le bruit »).
-4. Pied : listes « Micro d'entrée » (Yeti attendu) et « Sortie vers applis » (entrée CABLE attendue).
+Top to bottom:
+1. Header: "Yeti Voice", "Preset" list (Clear / Live / Meeting) + "Advanced mode" button.
+2. Voice area: big "Muted / Unmuted" button, vertical level meter, red "Clipping!" indicator on overload.
+3. Three large sliders: "Volume", "Clarity", "Noise reduction", each with a % value and a short hint ("Louder", "Clearer voice", "Cuts background noise").
+4. Footer: "Input microphone" list (Yeti expected) and "Output to apps" list (CABLE input expected).
 
-États :
-- Tout présent : niveau vert animé quand on parle.
-- Câble absent : bandeau orange « Sortie vers applis introuvable » + bouton « Revoir le premier démarrage » ; sortie grisée, curseurs actifs.
-- Yeti absent : message « Micro Yeti non détecté » + bouton « Revérifier ».
+States:
+- All present: green level animates while speaking.
+- Cable missing: orange banner "Output to apps not found" + "Review first-run setup" button; output greyed out, sliders still active.
+- Yeti missing: "Yeti microphone not detected" message + "Check again" button.
 
-## 2. Vue Avancée
+## 2. Advanced view
 
-Même base + chaîne fixe, dans l'ordre : coupe-bas 80 Hz → réduction de bruit → porte de bruit → compresseur → égaliseur 4 bandes + courbe → dé-esseur → limiteur.
+Same base + fixed chain, in order: 80 Hz high-pass → noise reduction → noise gate → compressor → 4-band equalizer + curve → de-esser → limiter.
 
-Chaque bloc : une ligne avec interrupteur « Activé », nom français, 2–3 réglages (porte : « Seuil », « Ouverture » ; compresseur : « Force », « Attaque » ; égaliseur : 4 gains + courbe ; dé-esseur : « Sensibilité » ; limiteur : « Plafond »). Unités simples (Hz, dB, ms).
+Each block: one row with an "Enabled" switch, its name, 2–3 settings (gate: "Threshold", "Attack"; compressor: "Amount", "Attack"; equalizer: 4 gains + curve; de-esser: "Sensitivity"; limiter: "Ceiling"). Plain units (Hz, dB, ms).
 
-Pied de chaîne : mention « Retard estimé : ~X ms » + bouton « Tester mon micro (5 s) » (enregistre, rejoue, affiche le niveau maximal).
+Chain footer: "Estimated latency: ~X ms" note + "Test my mic (5 s)" button (records, plays back, shows peak level).
 
-## 3. Premier démarrage
+## 3. First run
 
-Assistant en 3 écrans :
-1. « Micro » : cherche le Yeti, coche verte si trouvé, sinon aide au branchement.
-2. « Sortie vers applis » : cherche l'entrée CABLE, sinon bouton « Ouvrir la page d'installation » + « Revérifier ».
-3. « Réglages du micro » : rappel illustré — gain du Yeti au minimum, motif en cœur (cardioïde), 48 kHz sous Windows. Case « J'ai compris » pour finir.
+3-screen wizard:
+1. "Microphone": looks for the Yeti, green check if found, otherwise plug-in help.
+2. "Output to apps": looks for the CABLE input, otherwise an "Open install page" button + "Check again".
+3. "Mic setup": illustrated reminder — Yeti gain at minimum, heart (cardioid) pattern, 48 kHz in Windows. "Got it" checkbox to finish.
 
-Escamotable, mais le rappel revient tant que Yeti ou câble manque.
+Skippable, but the reminder comes back while Yeti or cable is missing.
 
-## 4. Principes
+## 4. Principles
 
-- Sombre, dense mais lisible : fond anthracite, texte clair, un seul accent orange, grands chiffres, contrastes forts.
-- Clavier accessible : tout au clavier (Tab, flèches, Espace pour couper le son), focus visible, équivalent texte de chaque couleur.
-- Français par défaut. Lexique imposé : « Son coupé » (jamais Mute), « Niveau » (jamais peak-meter), « Saturation » (jamais clip), « Préréglage » (jamais preset), « Curseur », « Interrupteur », « Porte de bruit », « Coupe-bas », « Égaliseur ».
+- Dark, dense but readable: charcoal background, light text, a single orange accent, big numbers, strong contrast.
+- Keyboard accessible: everything via keyboard (Tab, arrows, Space to mute/unmute), visible focus, a text equivalent for every color cue.
+- English by default.

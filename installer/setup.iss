@@ -1,5 +1,5 @@
-; Yeti Voice — script Inno Setup minimal.
-; Ne redistribue AUCUN driver audio : VB-CABLE s'installe séparément par l'utilisateur.
+; Yeti Voice — minimal Inno Setup script.
+; Bundles NO audio driver: VB-CABLE is installed separately by the user.
 #define MyAppName "Yeti Voice"
 #define MyAppVersion "0.1.0"
 #define MyAppPublisher "cleeryy"

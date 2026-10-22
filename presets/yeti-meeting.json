@@ -16,5 +16,5 @@
   },
   "deesser": { "enabled": false, "frequencyHz": 6500.0, "thresholdDb": -24.0 },
   "limiter": { "enabled": true, "ceilingDb": -2.0, "releaseMs": 80.0 },
-  "notes": "Preset visio naturel : compression douce, gate souple avec release long pour ne pas couper les fins de phrases."
+  "notes": "Natural meeting preset: gentle compression, soft gate with long release so sentence endings are not cut off."
 }

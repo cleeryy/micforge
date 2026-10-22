@@ -1,13 +1,13 @@
-# Contribuer à Yeti Voice
+# Contributing to Yeti Voice
 
-Merci ! Quelques règles simples :
+Thanks! A few simple rules:
 
-1. **PR petites et ciblées** : une feature / un fix par PR.
-2. **Core testé** : toute logique dans `BlueYeti.Core` doit être couverte par xunit.
-   Lance `dotnet test` avant de pousser (le projet WPF ne build que sur Windows).
-3. **Pas de binaire/driver** dans le repo : le câble virtuel reste externe (voir README).
-4. **Presets** : tout nouveau preset JSON doit respecter le schéma (`version`,
+1. **Small, focused PRs**: one feature / one fix per PR.
+2. **Tested Core**: any logic in `BlueYeti.Core` must be covered by xunit.
+   Run `dotnet test` before pushing (the WPF project only builds on Windows).
+3. **No binaries/drivers** in the repo: the virtual cable stays external (see README).
+4. **Presets**: any new JSON preset must follow the schema (`version`,
    `highpass`, `rnnoise`, `gate`, `comp`, `eq`, `deesser`, `limiter`, `notes`)
-   et passer `python3 -m json.tool`.
-5. **Français** pour les docs utilisateur, code et commentaires en anglais ou français.
-6. Licence : toute contribution est sous AGPL-3.0-only.
+   and pass `python3 -m json.tool`.
+5. **English** for user docs; code and comments in English.
+6. License: every contribution is under AGPL-3.0-only.

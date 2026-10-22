@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "name": "yeti-meeting",
+  "name": "laptop",
   "highpass": { "enabled": true, "frequencyHz": 120 },
-  "rnnoise": { "enabled": true },
+  "noise": { "enabled": true },
   "gate": { "enabled": true, "thresholdDb": -38.0, "attackMs": 10.0, "releaseMs": 200.0 },
   "comp": { "enabled": true, "thresholdDb": -16.0, "ratio": 2.5, "attackMs": 15.0, "releaseMs": 200.0, "makeupDb": 3.0 },
   "eq": {
@@ -16,5 +16,5 @@
   },
   "deesser": { "enabled": false, "frequencyHz": 6500.0, "thresholdDb": -24.0 },
   "limiter": { "enabled": true, "ceilingDb": -2.0, "releaseMs": 80.0 },
-  "notes": "Natural meeting preset: gentle compression, soft gate with long release so sentence endings are not cut off."
+  "notes": "Built-in laptop microphones: stronger high-pass against fan rumble, soft gate with long release so sentence endings are not cut off, gentle compression."
 }

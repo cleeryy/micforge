@@ -1,0 +1,3 @@
+[workspace]
+members = ["crates/micforge-core", "crates/micforge-audio", "src-tauri"]
+resolver = "2"

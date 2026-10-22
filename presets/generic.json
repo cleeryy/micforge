@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "name": "yeti-clear",
+  "name": "generic",
   "highpass": { "enabled": true, "frequencyHz": 80 },
-  "rnnoise": { "enabled": true },
+  "noise": { "enabled": true },
   "gate": { "enabled": true, "thresholdDb": -40.0, "attackMs": 5.0, "releaseMs": 120.0 },
   "comp": { "enabled": true, "thresholdDb": -18.0, "ratio": 3.0, "attackMs": 10.0, "releaseMs": 150.0, "makeupDb": 4.0 },
   "eq": {
@@ -16,5 +16,5 @@
   },
   "deesser": { "enabled": true, "frequencyHz": 6500.0, "thresholdDb": -24.0 },
   "limiter": { "enabled": true, "ceilingDb": -1.0, "releaseMs": 50.0 },
-  "notes": "Versatile clear-voice preset: gentle high-pass, +2 dB presence at 3 kHz, limiter at -1 dB."
+  "notes": "Generic starting point for any microphone: gentle high-pass, moderate gate and compression, +2 dB presence at 3 kHz, limiter at -1 dB."
 }

@@ -1,37 +1,31 @@
-## .NET / C#
-bin/
-obj/
-out/
-publish/
-TestResults/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-.vs/
-_ReSharper*/
-*.DotSettings.user
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
-*.nupkg
-*.snupkg
-project.lock.json
-project.fragment.lock.json
-artifacts/
-benchmarkdotnet/
-coverage*/
-*.coverage
-*.coveragexml
+# Rust / Cargo
+target/
+Cargo.lock
+**/*.rs.bk
 
-## Windows
+# Tauri
+src-tauri/target/
+src-tauri/WixTools/
+*.AppImage
+*.dmg
+*.exe
+*.msi
+
+# Frontend (owned by the frontend lane)
+frontend/node_modules/
+frontend/dist/
+
+# Windows
 Thumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
-## Rider / VS Code
+# Rider / VS Code
 .idea/
 .vscode/
 *.code-workspace
 
-## OS
+# OS
 .DS_Store
+# Tauri generated
+src-tauri/gen/

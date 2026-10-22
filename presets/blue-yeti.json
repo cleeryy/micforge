@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "name": "yeti-stream",
+  "name": "blue-yeti",
   "highpass": { "enabled": true, "frequencyHz": 100 },
-  "rnnoise": { "enabled": true },
+  "noise": { "enabled": true },
   "gate": { "enabled": true, "thresholdDb": -45.0, "attackMs": 3.0, "releaseMs": 100.0 },
   "comp": { "enabled": true, "thresholdDb": -20.0, "ratio": 4.0, "attackMs": 8.0, "releaseMs": 120.0, "makeupDb": 6.0 },
   "eq": {
@@ -16,5 +16,5 @@
   },
   "deesser": { "enabled": true, "frequencyHz": 7000.0, "thresholdDb": -26.0 },
   "limiter": { "enabled": true, "ceilingDb": -1.5, "releaseMs": 40.0 },
-  "notes": "Punchy streaming preset: heavy compression at 4:1 ratio, boosted presence, tight gate against keyboard and clicks."
+  "notes": "Blue Yeti: set LOW physical gain on the mic knob, cardioid (heart) pattern, 48 kHz in Windows sound settings. Punchy stream-ready tuning with tight gate against keyboard clicks."
 }
